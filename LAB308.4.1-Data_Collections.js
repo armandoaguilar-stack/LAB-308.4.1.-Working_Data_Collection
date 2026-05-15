@@ -102,3 +102,61 @@ const numberOfColumns = rows2[0].split(",").length;
 console.log('Number of Columns:' , numberOfColumns);
 
 //Instead of hard-coding four columns per row, expand your code to accept any number of columns. This should be calculated dynamically based on the first row of data
+
+
+const csvData3 = `ID,Name,Occupation,Age,Class
+42,Bruce,Knight,41,Math
+57,Bob,Fry Cook,19,Science
+63,Blaine,Quiz Master,58,Philosophy
+98,Bill,Doctor’s Assistant,26,Algebra
+42,Bruce,Batman,35,Biology`; // added later on and dynamically modifies array and log.table
+
+const rows3 = csvData3.split("\n");
+
+const headers2 = rows3[0].split(",");
+
+const numberOfColumns2 = rows3[0].split(",").length;
+
+//dynamically determine the # of columns at any given time, works if more columns added.
+const numberOfColumns3 = headers2.length; 
+
+console.log("Number of Columns:" , numberOfColumns3);
+
+const dataArr2 = [];
+
+for (let i = 1; i < rows3.length; i++) {
+const values2 = rows3[i].split(",");
+
+const person1 = {};
+
+for (let j = 0; j < numberOfColumns3; j++) { //usage of new object properties to make dynamic changes
+    person1[headers2[j]] = values2[j];
+}
+
+ dataArr2.push(person1);
+
+}
+
+console.table(dataArr2);
+
+// Turning results in 2D array
+const csvData4 = `ID,Name,Occupation,Age,Class,Color
+42,Bruce,Knight,41,Math,Blue
+57,Bob,Fry Cook,19,Science,Green
+63,Blaine,Quiz Master,58,Philosophy,Red
+98,Bill,Doctor’s Assistant,26,Algebra,Purple
+42,Bruce,Batman,35,Biology,Orange`; 
+
+const rows4 = csvData4.split("\n");
+
+const dataArr4 = []; // 2D arrays 
+
+for (let i = 0; i < rows4.length; i++) {
+    const values4 = rows4[i].split(","); // converts each row into indiviual array
+    dataArr4.push(rows4); //logs into parent array
+}
+
+console.log(dataArr4[1]); //Usage of cache values 
+
+
+
