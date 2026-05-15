@@ -42,9 +42,9 @@ let arr2 = [];
 for (i of table){
 
 //Splits the string whenever there is a comma
-   arr2.push( i.split(","));
-}
-console.log(arr2);
+    arr2.push( i.split(","));
+ }
+ console.log(arr2);
 
 //First iteration: ["ID, "Name', "Occupation", "Age"],
 //2nd iteration: ["42", "Bruce", "Knight", "41"],
@@ -53,8 +53,52 @@ console.log(arr2);
 console.log('Part 1: Refactoring Old Code')
 
 // Data CSV 
-const csv = "ID,Name,Occupation,Age,42,Bruce,Knight,41,57,Bob,Fry Cook,19,63,Blaine,Quiz Master,58,98,Bill,Doctor’s Assistant,26";
+const csvData = `ID,Name,Occupation,Age
+42,Bruce,Knight,41
+57,Bob,Fry Cook,19
+63,Blaine,Quiz Master,58
+98,Bill,Doctor’s Assistant,26`;
 
 // Splitting the CSV data into rows using split. Provides brea/spacing.
-const rows = csv.split("\n");
+const rows = csvData.split("\n");
 
+const headers = rows[0].split(",");
+
+// We need to convert each CSV row into an array and get headers
+const dataArr = []; // [] searches and references data in the array
+
+//Start at 1 [i] to skip the header section for rows to go through data in arrays 
+for (let i = 1; i < rows.length; i++) {
+    const values = rows[i].split(",");
+    
+//Clean data by creating an object for each row new with individual values
+    const person = {
+        ID: values[0],
+        Name: values[1],
+        Occupation: values[2],
+        Age:values[3]
+    };
+
+    dataArr.push(person) // log data from person data. 
+}
+
+console.log(headers); // logs header information on its own row
+console.table(dataArr); //Turns data into a table in an orderly manner acorss rows 
+
+
+console.log('Part 2: Expanding Functionality')
+
+const csvData2 = `ID,Name,Occupation,Age
+42,Bruce,Knight,41
+57,Bob,Fry Cook,19
+63,Blaine,Quiz Master,58
+98,Bill,Doctor’s Assistant,26`;
+
+const rows2 = csvData2.split("\n");
+
+// Declare a variable that stores the number of columns in each row of data within the CSV.
+const numberOfColumns = rows2[0].split(",").length;
+
+console.log('Number of Columns:' , numberOfColumns);
+
+//Instead of hard-coding four columns per row, expand your code to accept any number of columns. This should be calculated dynamically based on the first row of data
