@@ -50,6 +50,8 @@ for (i of table){
 //2nd iteration: ["42", "Bruce", "Knight", "41"],
 // 3rd / 4th / 5th iteration ++++ 
 
+console.log()
+console.log()
 console.log('Part 1: Refactoring Old Code')
 
 // Data CSV 
@@ -82,10 +84,10 @@ for (let i = 1; i < rows.length; i++) {
     dataArr.push(person) // log data from person data. 
 }
 
-console.log(headers); // logs header information on its own row
 console.table(dataArr); //Turns data into a table in an orderly manner acorss rows 
 
-
+console.log()
+console.log()
 console.log('Part 2: Expanding Functionality')
 
 const csvData2 = `ID,Name,Occupation,Age
@@ -159,4 +161,41 @@ for (let i = 0; i < rows4.length; i++) {
 console.log(dataArr4[1]); //Usage of cache values 
 
 
+console.log()
+console.log()
+console.log('Part 3 - Transforming Data')
 
+const csvData5 = `ID,Name,Occupation,Age,Class,Color
+42,Bruce,Knight,41,Math,Blue
+57,Bob,Fry Cook,19,Science,Green
+63,Blaine,Quiz Master,58,Philosophy,Red
+98,Bill,Doctor’s Assistant,26,Algebra,Purple
+42,Bruce,Batman,35,Biology,Orange`; 
+
+const rows5 = csvData5.split("\n");
+
+const dataArr5 = []; 
+
+for (let i = 0; i < rows5.length; i++) {
+    dataArr5.push(rows5[i].split(",")); // converting CSV into 2D array in cached mode
+}
+
+//Extract headers and make them lowercase
+const headers5 = dataArr5[0].map(h => h.toLowerCase()); //.map creates new array with results on calling a f(x) on every element. h=headers
+
+//Converting rows into objects
+const results5 = []; 
+
+for (let i = 1; i < dataArr5.length; i++) {
+    const rows6 = dataArr5[i];
+    const obj = {};
+
+for (let j = 0; j < headers5.length; j++) {
+    obj[headers5[j]] = rows6[j];
+}
+
+    results5.push(obj);
+
+}
+
+console.log(results5);
