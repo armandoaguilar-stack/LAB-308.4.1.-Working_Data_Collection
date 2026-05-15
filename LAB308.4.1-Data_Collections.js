@@ -199,3 +199,28 @@ for (let j = 0; j < headers5.length; j++) {
 }
 
 console.log(results5);
+
+
+
+
+console.log()
+console.log()
+console.log('Part 4 - Sorting and Manipulating Data')
+console.log('Removing The Last Element from Sorted Array')
+
+// removing the last element with pop()
+results5.pop();
+console.log(results5.map(person => person.age));
+
+//adding information to specific index in an array .splice()
+results5.splice(1, 0, {
+    id: "48",
+    name: "Barry",
+    occupation: "Runner",
+    age: "25",
+    class: "Theater",
+    color: "Pink"
+
+});
+
+console.table(results5);
